@@ -1,22 +1,19 @@
 package my.id.hariyogi
 
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Texture
+import my.id.hariyogi.base.BaseActor
+import my.id.hariyogi.entity.Meteor
+import my.id.hariyogi.entity.Rocket
 
 class RocketStar: GameBeta() {
 
-    private lateinit var rocket: ActorBeta
-    private lateinit var meteor: ActorBeta
+    private lateinit var rocket: BaseActor
+    private lateinit var meteor: BaseActor
 
     override fun initialize() {
-        rocket = Rocket()
-        rocket.setTexture(Texture(Gdx.files.internal("ship.png")))
-        rocket.setPosition(20f, 20f)
+        rocket = Rocket(20f, 20f)
         mainStage.addActor(rocket)
 
-        meteor = ActorBeta()
-        meteor.setTexture(Texture(Gdx.files.internal("meteor.png")))
-        meteor.setPosition(380f, 380f)
+        meteor = Meteor(380f, 380f)
         mainStage.addActor(meteor)
     }
 

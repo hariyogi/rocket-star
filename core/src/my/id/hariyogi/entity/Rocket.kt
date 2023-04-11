@@ -1,9 +1,16 @@
-package my.id.hariyogi
+package my.id.hariyogi.entity
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input.Keys
+import my.id.hariyogi.base.AnimationUtils
+import my.id.hariyogi.base.BaseActor
 
-class Rocket: ActorBeta() {
+class Rocket(x: Float, y: Float) : BaseActor(x, y) {
+
+    init {
+        val rocketPathFile = "ship.png"
+        initTexture(AnimationUtils.loadSingleTexture(rocketPathFile))
+    }
 
     override fun act(delta: Float) {
         super.act(delta)

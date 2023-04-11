@@ -15,7 +15,7 @@ object AnimationUtils {
         val textureArray: com.badlogic.gdx.utils.Array<TextureRegion> = com.badlogic.gdx.utils.Array()
 
         for(fileName in fileNames) {
-            val texture = Texture(Gdx.files.internal("filename"))
+            val texture = Texture(Gdx.files.internal(fileName))
             texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear)
             textureArray.add(TextureRegion(texture))
         }
