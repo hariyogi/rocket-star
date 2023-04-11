@@ -28,6 +28,19 @@ open class BaseActor(x: Float, y: Float) : Actor() {
         rectangle = Rectangle(x, y, width.toFloat(), height.toFloat())
     }
 
+    /**
+     * Konfigurasi size dan originnya.
+     */
+    fun setSizeAndOrigin(width: Float, height: Float) {
+        setSize(width, height)
+        setOrigin(width / 2, height / 2)
+    }
+
+    override fun setSize(width: Float, height: Float) {
+        super.setSize(width, height)
+        rectangle?.setSize(width, height)
+    }
+
     fun isAnimationFinished() = animation?.isAnimationFinished(elapsedTime) ?: true
     fun isOverlaps(baseActor: BaseActor) = rectangle?.overlaps(baseActor.rectangle) ?: false
 
