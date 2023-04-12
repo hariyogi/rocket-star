@@ -43,7 +43,9 @@ class Rocket(x: Float, y: Float) : BaseActor(x, y) {
         animationPaused = !velocity.isMoving
 
         if(velocity.speed > 0) {
-            rotation = velocity.motionAngle
+            Gdx.app.log("motionAngle", "Angle : ${velocity.motionAngle}")
+            rotation = velocity.motionAngle - 90
+            Gdx.app.log("Rotation", "${rotation}")
         }
     }
 
