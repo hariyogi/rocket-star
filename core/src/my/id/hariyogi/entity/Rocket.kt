@@ -2,8 +2,7 @@ package my.id.hariyogi.entity
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input.Keys
-import com.badlogic.gdx.math.MathUtils
-import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.graphics.g2d.Batch
 import my.id.hariyogi.base.AnimationUtils
 import my.id.hariyogi.base.BaseActor
 import my.id.hariyogi.base.Velocity
@@ -13,8 +12,8 @@ class Rocket(x: Float, y: Float) : BaseActor(x, y) {
     val velocity: Velocity = Velocity(100f, 100f, 400f)
 
     init {
-        val rocketPathFile = "ship.png"
-        initTexture(AnimationUtils.loadSingleTexture(rocketPathFile))
+        val rocketPathFile = arrayOf("rocket_idle.png", "rocket_move.png")
+        initTexture(AnimationUtils.loadFromFiles(rocketPathFile, 1f, true))
         setSizeAndOrigin(60f, 60f)
     }
 
@@ -43,10 +42,14 @@ class Rocket(x: Float, y: Float) : BaseActor(x, y) {
         animationPaused = !velocity.isMoving
 
         if(velocity.speed > 0) {
-            Gdx.app.log("motionAngle", "Angle : ${velocity.motionAngle}")
             rotation = velocity.motionAngle - 90
-            Gdx.app.log("Rotation", "${rotation}")
         }
+    }
+
+    override fun draw(batch: Batch?, parentAlpha: Float) {
+        super.draw(batch, parentAlpha)
+
+
     }
 
 }
